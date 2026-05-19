@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swag | The Premium Co-live Space – Luxury PG in Madhapur, Hyderabad</title>
+<meta name="description" content="Swag Colive - Premium luxury co-living PG in Madhapur, Hyderabad. Best PG near Hitech City for IT professionals, software employees, and corporate workers.">
+<meta name="keywords" content="Best PG in Madhapur, Premium Colive Hyderabad, Luxury PG near Hitech City, Co-living space Hyderabad, PG near IT companies Hyderabad">
+<meta property="og:title" content="Swag | The Premium Co-live Space">
+<meta property="og:description" content="Luxury co-living for IT professionals in Madhapur, Hyderabad">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dark: #8B6914;
+  --obsidian: #0A0A0B;
+  --charcoal: #111113;
+  --dark-card: #16161A;
+  --border: rgba(201,168,76,0.2);
+  --text-primary: #F5F0E8;
+  --text-muted: rgba(245,240,232,0.55);
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background: var(--obsidian);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ─── LOADER ─── */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--obsidian);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; }
+.loader-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  animation: loaderPulse 1.5s ease-in-out infinite;
+}
+.loader-bar {
+  width: 200px; height: 1px;
+  background: rgba(201,168,76,0.2);
+  margin-top: 2rem; overflow: hidden;
+}
+.loader-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  animation: loaderFill 1.8s ease-out forwards;
+}
+@keyframes loaderPulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+@keyframes loaderFill { 0%{width:0} 100%{width:100%} }
+
+/* ─── CURSOR ─── */
+.cursor {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  mix-blend-mode: exclusion;
+}
+.cursor-ring {
+  position: fixed; width: 36px; height: 36px;
+  border: 1px solid var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9997;
+  transform: translate(-50%,-50%);
+  transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  opacity: 0.5;
+}
+
+/* ─── NAVBAR ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem 4vw;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.5s ease;
+}
+nav.scrolled {
+  background: rgba(10,10,11,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 4vw;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 600;
+  color: var(--gold); text-decoration: none;
+  letter-spacing: 0.08em;
+}
+.nav-logo span { color: var(--text-primary); font-weight: 300; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px;
+  background:var(--gold); transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--obsidian); padding: 0.6rem 1.6rem;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px; transition: all 0.3s ease;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.35); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 24px; height: 1px; background: var(--gold); transition: all 0.3s; }
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 99;
+  background: rgba(10,10,11,0.98);
+  backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; color: var(--text-primary);
+  text-decoration: none; font-weight: 300; letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: var(--obsidian);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.04) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image: 
+    linear-gradient(var(--gold) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridDrift 20s linear infinite;
+}
+@keyframes gridDrift { 0%{transform:translateY(0)} 100%{transform:translateY(80px)} }
+
+.hero-particles {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.particle {
+  position: absolute; width: 2px; height: 2px;
+  background: var(--gold); border-radius: 50%;
+  animation: particleFloat linear infinite;
+  opacity: 0;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; padding: 2rem;
+  max-width: 900px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 1px solid var(--border);
+  padding: 0.4rem 1.2rem; border-radius: 50px;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+  background: rgba(201,168,76,0.05);
+  animation: fadeUp 1s ease 0.3s both;
+}
+.hero-badge::before { content: '✦'; }
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 300; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  animation: fadeUp 1s ease 0.5s both;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 300; line-height: 0.95;
+  letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  animation: fadeUp 1s ease 0.7s both;
+}
+.hero-title .gold { color: var(--gold); font-style: italic; }
+.hero-sub {
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  color: var(--text-muted); max-width: 520px; margin: 0 auto 3rem;
+  line-height: 1.8; font-weight: 300;
+  animation: fadeUp 1s ease 0.9s both;
+}
+.hero-actions {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 1s ease 1.1s both;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--obsidian); padding: 0.9rem 2.2rem;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px; border: none; cursor: pointer;
+  transition: all 0.4s ease; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,168,76,0.4); }
+.btn-outline {
+  background: transparent; color: var(--text-primary);
+  border: 1px solid var(--glass-border); padding: 0.9rem 2.2rem;
+  font-size: 0.82rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px; cursor: pointer;
+  transition: all 0.4s ease; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+.btn-whatsapp {
+  background: #25D366; color: white;
+  border: none; padding: 0.9rem 2.2rem;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px; cursor: pointer;
+  transition: all 0.4s ease; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,211,102,0.4); }
+
+.hero-stats {
+  display: flex; gap: 3rem; justify-content: center; margin-top: 4rem;
+  animation: fadeUp 1s ease 1.3s both;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 600; color: var(--gold); line-height: 1;
+}
+.hero-stat-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
+.hero-divider { width: 1px; background: var(--border); }
+
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  animation: fadeUp 1s ease 1.5s both; cursor: pointer;
+}
+.hero-scroll-text { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); }
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3; transform:scaleY(0.8)} 50%{opacity:1; transform:scaleY(1)} }
+
+/* ─── SECTION COMMONS ─── */
+section { padding: 8rem 4vw; }
+.section-tag {
+  font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.section-tag::before { content: '— '; }
+.section-tag::after { content: ' —'; }
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300; line-height: 1.1;
+}
+.section-title em { color: var(--gold); font-style: italic; }
+.section-sub {
+  color: var(--text-muted); max-width: 520px;
+  font-size: 0.95rem; line-height: 1.9; margin-top: 1.2rem; font-weight: 300;
+}
+.gold-line {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 1.5rem 0;
+}
+
+/* ─── VACANCY BANNER ─── */
+.vacancy-banner {
+  background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+  border: 1px solid var(--border);
+  padding: 1rem 2rem; margin: 2rem 0;
+  display: inline-flex; align-items: center; gap: 1rem; border-radius: 4px;
+}
+.vacancy-dot {
+  width: 8px; height: 8px; background: #4ade80; border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(74,222,128,0.5);
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.vacancy-text { font-size: 0.82rem; color: var(--text-primary); }
+.vacancy-count { color: var(--gold); font-weight: 600; font-size: 1.1rem; }
+
+/* ─── PREMIUM FEATURES STRIP ─── */
+.features-strip {
+  padding: 2rem 4vw;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--dark-card);
+}
+.features-track {
+  display: flex; gap: 4rem;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+.feature-chip {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-muted); white-space: nowrap;
+}
+.feature-chip .dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ─── ABOUT ─── */
+#about { background: var(--charcoal); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+  align-items: center; max-width: 1200px; margin: 0 auto;
+}
+.about-visual {
+  position: relative; aspect-ratio: 4/5;
+  border-radius: 4px; overflow: hidden;
+}
+.about-img-main {
+  width: 100%; height: 100%;
+  background: 
+    linear-gradient(135deg, rgba(201,168,76,0.1) 0%, transparent 50%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500"><rect fill="%231a1a1e" width="400" height="500"/><text x="50%" y="50%" text-anchor="middle" fill="%23C9A84C" font-size="14" opacity="0.3">Premium Colive Building</text></svg>');
+  background-size: cover; background-position: center;
+  object-fit: cover;
+}
+.about-img-overlay {
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 40%;
+  background: linear-gradient(to top, var(--charcoal), transparent);
+}
+.about-accent-card {
+  position: absolute; top: 2rem; right: -2rem;
+  background: var(--dark-card); border: 1px solid var(--border);
+  padding: 1.2rem 1.6rem; border-radius: 4px;
+  backdrop-filter: blur(20px);
+}
+.about-accent-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; color: var(--gold); font-weight: 600; line-height: 1;
+}
+.about-accent-text { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; }
+.about-pillars { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 3rem; }
+.pillar {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.2rem; border: 1px solid var(--glass-border);
+  border-radius: 4px; background: var(--glass);
+  transition: all 0.4s ease; cursor: default;
+}
+.pillar:hover { border-color: var(--border); background: rgba(201,168,76,0.04); transform: translateX(6px); }
+.pillar-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border-radius: 2px; display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.pillar-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.3rem; }
+.pillar-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ─── ROOMS ─── */
+#rooms { background: var(--obsidian); }
+.rooms-header { max-width: 1200px; margin: 0 auto 4rem; }
+.room-filters {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem;
+}
+.filter-btn {
+  padding: 0.5rem 1.2rem; border-radius: 50px;
+  border: 1px solid var(--glass-border);
+  background: transparent; color: var(--text-muted);
+  font-size: 0.75rem; font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.08em; cursor: pointer;
+  transition: all 0.3s ease;
+}
+.filter-btn.active, .filter-btn:hover {
+  border-color: var(--gold); color: var(--gold);
+  background: rgba(201,168,76,0.07);
+}
+.rooms-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem; max-width: 1200px; margin: 0 auto;
+}
+.room-card {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 8px; overflow: hidden;
+  transition: all 0.5s ease; cursor: default;
+}
+.room-card:hover { border-color: var(--border); transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1); }
+.room-img {
+  aspect-ratio: 16/10; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1e, #111113);
+  display: flex; align-items: center; justify-content: center;
+}
+.room-img-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+  transition: transform 0.6s ease;
+}
+.room-card:hover .room-img-bg { transform: scale(1.05); }
+.room-img-placeholder {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; color: rgba(201,168,76,0.2);
+}
+.room-badges {
+  position: absolute; top: 1rem; left: 1rem;
+  display: flex; gap: 0.4rem;
+}
+.badge {
+  padding: 0.25rem 0.7rem; border-radius: 50px;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.badge-ac { background: rgba(59,130,246,0.8); color: white; }
+.badge-nonac { background: rgba(107,114,128,0.8); color: white; }
+.badge-available { background: rgba(74,222,128,0.8); color: #064e3b; }
+.badge-full { background: rgba(239,68,68,0.7); color: white; }
+.badge-limited { background: rgba(251,191,36,0.8); color: #451a03; }
+.room-info { padding: 1.5rem; }
+.room-type {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.4rem;
+}
+.room-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 500; margin-bottom: 0.8rem;
+}
+.room-price {
+  display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 1rem;
+}
+.room-price-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; color: var(--gold); font-weight: 600;
+}
+.room-price-unit { font-size: 0.75rem; color: var(--text-muted); }
+.room-amenities {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.2rem;
+}
+.amenity-tag {
+  padding: 0.2rem 0.6rem; border: 1px solid var(--glass-border);
+  border-radius: 50px; font-size: 0.65rem; color: var(--text-muted);
+}
+.room-cta {
+  width: 100%; background: transparent;
+  border: 1px solid var(--border); color: var(--gold);
+  padding: 0.75rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer;
+  border-radius: 2px; transition: all 0.3s ease; text-decoration: none;
+  display: block; text-align: center;
+}
+.room-cta:hover { background: var(--gold); color: var(--obsidian); }
+
+/* ─── PRICING ─── */
+#pricing { background: var(--charcoal); }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem; max-width: 1100px; margin: 4rem auto 0;
+}
+.price-card {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 8px; padding: 2.5rem 2rem;
+  transition: all 0.5s ease; position: relative; overflow: hidden;
+}
+.price-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.price-card:hover::before { opacity: 1; }
+.price-card.featured {
+  border-color: var(--border);
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), var(--dark-card));
+}
+.price-card.featured::before { opacity: 1; }
+.featured-badge {
+  position: absolute; top: 1rem; right: 1rem;
+  background: var(--gold); color: var(--obsidian);
+  padding: 0.2rem 0.7rem; border-radius: 50px;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.price-card:hover { transform: translateY(-6px); border-color: var(--border); }
+.price-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.price-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 600; color: var(--text-primary); line-height: 1;
+}
+.price-main sup { font-size: 1.5rem; vertical-align: super; }
+.price-period { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+.price-divider { width: 100%; height: 1px; background: var(--glass-border); margin: 1.5rem 0; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.price-features li {
+  display: flex; gap: 0.6rem; align-items: center;
+  font-size: 0.82rem; color: var(--text-muted);
+}
+.price-features li::before { content: '✓'; color: var(--gold); font-weight: 600; flex-shrink: 0; }
+.deposit-note {
+  margin-top: 1.2rem; padding: 0.8rem;
+  background: rgba(201,168,76,0.05); border-radius: 4px;
+  font-size: 0.75rem; color: var(--text-muted);
+}
+.deposit-note strong { color: var(--gold-light); }
+
+/* ─── AMENITIES ─── */
+#amenities { background: var(--obsidian); }
+.amenities-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem; max-width: 1100px; margin: 4rem auto 0;
+}
+.amenity-card {
+  aspect-ratio: 1; background: var(--dark-card);
+  border: 1px solid var(--glass-border); border-radius: 8px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.8rem; cursor: default;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.amenity-card:hover {
+  border-color: var(--border); transform: scale(1.08);
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), var(--dark-card));
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.amenity-icon { font-size: 2rem; }
+.amenity-name { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+
+/* ─── FOOD MENU ─── */
+#food { background: var(--charcoal); }
+.food-week-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 1rem; max-width: 1200px; margin: 4rem auto 0;
+}
+.day-card {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 8px; padding: 1.5rem 1rem;
+  transition: all 0.4s ease;
+}
+.day-card:hover { border-color: var(--border); transform: translateY(-4px); }
+.day-card.today {
+  border-color: var(--gold); background: linear-gradient(135deg, rgba(201,168,76,0.08), var(--dark-card));
+}
+.day-name {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem; text-align: center;
+}
+.meal-item { margin-bottom: 0.8rem; }
+.meal-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+.meal-name { font-size: 0.8rem; margin-top: 0.2rem; font-weight: 400; }
+.meal-emoji { font-size: 1.2rem; margin-bottom: 0.3rem; }
+
+/* ─── GALLERY ─── */
+#gallery { background: var(--obsidian); }
+.gallery-filters { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.gallery-grid {
+  columns: 4 250px; gap: 1rem; max-width: 1200px; margin: 0 auto;
+}
+.gallery-item {
+  break-inside: avoid; margin-bottom: 1rem;
+  border-radius: 6px; overflow: hidden; position: relative;
+  cursor: pointer; transition: transform 0.4s ease;
+}
+.gallery-item:hover { transform: scale(1.02); }
+.gallery-img {
+  width: 100%; display: block;
+  background: var(--dark-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+}
+.gallery-img-inner {
+  width: 100%; padding-bottom: 75%;
+  position: relative;
+  background: linear-gradient(135deg, var(--dark-card), #1a1a20);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.gallery-img-inner img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.gallery-overlay {
+  position: absolute; inset: 0; background: rgba(10,10,11,0.6);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s ease; border-radius: 6px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay-icon { font-size: 2rem; color: var(--gold); }
+.gallery-placeholder-text {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0.5rem;
+  color: rgba(201,168,76,0.3);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; text-align: center; padding: 1rem;
+}
+
+/* ─── TESTIMONIALS ─── */
+#testimonials { background: var(--charcoal); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem; max-width: 1100px; margin: 4rem auto 0;
+}
+.testimonial-card {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 8px; padding: 2rem;
+  transition: all 0.4s ease;
+}
+.testimonial-card:hover { border-color: var(--border); transform: translateY(-4px); }
+.stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+.testimonial-text {
+  font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;
+  font-style: italic; margin-bottom: 1.5rem;
+}
+.testimonial-author { display: flex; align-items: center; gap: 1rem; }
+.author-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--obsidian); font-weight: 700;
+}
+.author-name { font-size: 0.88rem; font-weight: 500; }
+.author-role { font-size: 0.72rem; color: var(--text-muted); }
+
+/* ─── WHY US ─── */
+#why { background: var(--obsidian); }
+.why-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem; max-width: 1100px; margin: 4rem auto 0;
+}
+.why-card {
+  padding: 2rem; border: 1px solid var(--glass-border);
+  border-radius: 8px; background: var(--dark-card);
+  transition: all 0.4s ease; position: relative; overflow: hidden;
+}
+.why-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left;
+}
+.why-card:hover::after { transform: scaleX(1); }
+.why-card:hover { border-color: var(--border); transform: translateY(-6px); }
+.why-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+.why-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+.why-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.8; }
+
+/* ─── NEARBY IT ─── */
+#nearby { background: var(--charcoal); }
+.nearby-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem; max-width: 1000px; margin: 4rem auto 0;
+}
+.nearby-card {
+  padding: 1.5rem; border: 1px solid var(--glass-border);
+  border-radius: 8px; text-align: center; background: var(--dark-card);
+  transition: all 0.3s ease;
+}
+.nearby-card:hover { border-color: var(--border); transform: translateY(-4px); }
+.nearby-dist { font-size: 0.65rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.nearby-name { font-size: 0.9rem; font-weight: 500; }
+
+/* ─── CONTACT ─── */
+#contact { background: var(--obsidian); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  max-width: 1100px; margin: 4rem auto 0; align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 2rem; }
+.contact-detail { display: flex; gap: 1.2rem; align-items: flex-start; }
+.contact-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: rgba(201,168,76,0.08); border: 1px solid var(--border);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.contact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+.contact-value { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+.contact-actions { display: flex; flex-direction: column; gap: 1rem; }
+.contact-btn {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+  border: 1px solid var(--glass-border); border-radius: 4px;
+  text-decoration: none; color: var(--text-primary);
+  transition: all 0.3s ease; background: var(--dark-card);
+}
+.contact-btn:hover { border-color: var(--gold); transform: translateX(6px); }
+.contact-btn.whatsapp:hover { border-color: #25D366; }
+.contact-btn-icon { font-size: 1.4rem; }
+.contact-btn-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+.contact-btn-text { font-size: 0.9rem; font-weight: 500; }
+.contact-form-wrap {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 8px; padding: 2.5rem;
+}
+.form-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; margin-bottom: 2rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; }
+.form-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+.form-input, .form-select, .form-textarea {
+  background: var(--obsidian); border: 1px solid var(--glass-border);
+  color: var(--text-primary); padding: 0.75rem 1rem;
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+  border-radius: 4px; outline: none; transition: border-color 0.3s ease;
+  width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+.form-select option { background: var(--charcoal); }
+.form-textarea { resize: vertical; min-height: 100px; }
+
+/* ─── MAP ─── */
+.map-wrap {
+  max-width: 1200px; margin: 4rem auto 0;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--glass-border);
+  aspect-ratio: 21/7;
+}
+.map-wrap iframe { width: 100%; height: 100%; border: none; filter: grayscale(40%) invert(90%) hue-rotate(180deg); }
+
+/* ─── FAQ ─── */
+#faq { background: var(--charcoal); }
+.faq-list { max-width: 800px; margin: 4rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+.faq-item {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 6px; overflow: hidden; transition: border-color 0.3s ease;
+}
+.faq-item.open { border-color: var(--border); }
+.faq-q {
+  padding: 1.2rem 1.5rem; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.9rem; font-weight: 400;
+  user-select: none;
+}
+.faq-chevron { color: var(--gold); transition: transform 0.3s ease; flex-shrink: 0; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  padding: 0 1.5rem; max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.2rem; }
+
+/* ─── ADMIN DASHBOARD ─── */
+#admin-section {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: var(--obsidian); overflow: auto;
+}
+#admin-section.open { display: flex; }
+.admin-sidebar {
+  width: 240px; flex-shrink: 0; background: var(--charcoal);
+  border-right: 1px solid var(--border); padding: 2rem 0;
+  display: flex; flex-direction: column;
+}
+.admin-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; color: var(--gold); padding: 0 1.5rem; margin-bottom: 2rem;
+}
+.admin-nav { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
+.admin-nav-btn {
+  display: flex; align-items: center; gap: 0.8rem; padding: 0.85rem 1.5rem;
+  background: none; border: none; color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem; cursor: pointer;
+  text-align: left; transition: all 0.3s ease; letter-spacing: 0.05em;
+}
+.admin-nav-btn:hover { color: var(--text-primary); background: var(--glass); }
+.admin-nav-btn.active { color: var(--gold); background: rgba(201,168,76,0.08); border-left: 2px solid var(--gold); }
+.admin-main { flex: 1; padding: 2.5rem; overflow: auto; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+.admin-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; }
+.admin-close {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  color: var(--text-muted); padding: 0.5rem 1rem; font-size: 0.8rem; cursor: pointer;
+  border-radius: 4px; font-family: 'DM Sans', sans-serif; transition: all 0.3s;
+}
+.admin-close:hover { border-color: var(--gold); color: var(--gold); }
+.admin-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+.admin-stat-card {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 8px; padding: 1.5rem;
+}
+.admin-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; color: var(--gold); font-weight: 600; line-height: 1;
+}
+.admin-stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.5rem; }
+.admin-section { display: none; }
+.admin-section.active { display: block; }
+.admin-table-wrap {
+  background: var(--dark-card); border: 1px solid var(--glass-border);
+  border-radius: 8px; overflow: auto;
+}
+table { width: 100%; border-collapse: collapse; }
+thead { border-bottom: 1px solid var(--border); }
+th { padding: 0.9rem 1.2rem; text-align: left; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+td { padding: 1rem 1.2rem; font-size: 0.82rem; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.04); }
+tr:hover td { color: var(--text-primary); background: var(--glass); }
+.status-paid { color: #4ade80; }
+.status-pending { color: #fb923c; }
+.status-resolved { color: #4ade80; }
+.status-open { color: #f87171; }
+.action-btn {
+  padding: 0.3rem 0.8rem; border-radius: 3px; border: 1px solid;
+  font-size: 0.65rem; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.3s; background: transparent;
+}
+.action-btn.edit { border-color: var(--gold); color: var(--gold); }
+.action-btn.delete { border-color: #f87171; color: #f87171; }
+.action-btn.resolve { border-color: #4ade80; color: #4ade80; }
+.action-btn:hover { filter: brightness(1.3); }
+.add-btn {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--obsidian); padding: 0.65rem 1.5rem; border: none;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; border-radius: 4px; font-family: 'DM Sans', sans-serif;
+  margin-bottom: 1.5rem; transition: all 0.3s ease;
+}
+.add-btn:hover { box-shadow: 0 8px 25px rgba(201,168,76,0.35); }
+.vacancy-bars { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+.vac-card {
+  background: var(--obsidian); border: 1px solid var(--glass-border);
+  border-radius: 8px; padding: 1.5rem;
+}
+.vac-bar-wrap {
+  height: 6px; background: rgba(255,255,255,0.06);
+  border-radius: 3px; margin: 0.8rem 0; overflow: hidden;
+}
+.vac-bar {
+  height: 100%; border-radius: 3px;
+  transition: width 1s ease;
+}
+.vac-bar.full { background: #f87171; }
+.vac-bar.partial { background: var(--gold); }
+.vac-bar.empty { background: #4ade80; }
+
+/* ─── FLOATING BUTTONS ─── */
+.floats {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 150;
+  display: flex; flex-direction: column; gap: 0.8rem;
+}
+.float-btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+}
+.float-wa { background: #25D366; }
+.float-call { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); }
+.float-btn:hover { transform: scale(1.15); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--charcoal); border-top: 1px solid var(--border);
+  padding: 5rem 4vw 2rem;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
+  max-width: 1200px; margin: 0 auto; padding-bottom: 3rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+.footer-brand-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; color: var(--gold); margin-bottom: 1rem;
+}
+.footer-brand-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.9; max-width: 280px; }
+.footer-heading { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom {
+  max-width: 1200px; margin: 2rem auto 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.72rem; color: var(--text-muted);
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes particleFloat {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+}
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .food-week-grid { grid-template-columns: repeat(4, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 5vw; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-stats { gap: 1.5rem; }
+  .hero-divider { display: none; }
+  .hero-stat-num { font-size: 2rem; }
+  .food-week-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .admin-sidebar { display: none; }
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+  .cursor, .cursor-ring { display: none; }
+  .gallery-grid { columns: 2 150px; }
+  .about-accent-card { display: none; }
+}
+@media (max-width: 480px) {
+  section { padding: 5rem 5vw; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-actions { flex-direction: column; align-items: center; }
+}
+
+/* ─── LOGIN ─── */
+#login-overlay {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: rgba(10,10,11,0.95); backdrop-filter: blur(20px);
+  align-items: center; justify-content: center;
+}
+#login-overlay.open { display: flex; }
+.login-card {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 3rem; width: 100%; max-width: 400px;
+}
+.login-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+.login-error { color: #f87171; font-size: 0.8rem; text-align: center; margin-top: 0.5rem; display: none; }
+
+/* ─── MODAL ─── */
+.modal-bg {
+  display: none; position: fixed; inset: 0; z-index: 250;
+  background: rgba(10,10,11,0.8); backdrop-filter: blur(10px);
+  align-items: center; justify-content: center;
+}
+.modal-bg.open { display: flex; }
+.modal-card {
+  background: var(--dark-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 2.5rem;
+  width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto;
+}
+.modal-close { float: right; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.4rem; }
+
+/* Lightbox */
+#lightbox {
+  display: none; position: fixed; inset: 0; z-index: 280;
+  background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+}
+#lightbox.open { display: flex; }
+#lightbox-img { max-width: 90vw; max-height: 90vh; border-radius: 4px; object-fit: contain; }
+#lightbox-close {
+  position: absolute; top: 2rem; right: 2rem;
+  background: none; border: none; color: var(--gold); font-size: 2rem; cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">SWAG</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">SWAG <span>| Co-live</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#food">Food</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/918185989721?text=Hi%2C%20I'm%20interested%20in%20Swag%20Colive.%20Please%20share%20details." target="_blank" class="nav-cta">Book Now</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#rooms" onclick="closeMobile()">Rooms</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#amenities" onclick="closeMobile()">Amenities</a>
+  <a href="#food" onclick="closeMobile()">Food</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#" onclick="closeMobile(); showLogin()">Admin</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Premium Co-Living in Madhapur, Hyderabad</div>
+    <p class="hero-eyebrow">Est. 2023 · Plot 1142, Mega Hills</p>
+    <h1 class="hero-title">Live with <em>Swag</em><br>Work in Style</h1>
+    <p class="hero-sub">Hyderabad's most premium co-living space designed for IT professionals, startup founders, and corporate achievers. Where luxury meets community.</p>
+    <div class="vacancy-banner">
+      <div class="vacancy-dot"></div>
+      <span class="vacancy-text">Currently <span class="vacancy-count" id="vacancyCount">12</span> beds available — Limited seats</span>
+    </div>
+    <div class="hero-actions">
+      <a href="https://wa.me/918185989721?text=Hi%2C%20I%20want%20to%20book%20a%20room%20at%20Swag%20Colive.%20Please%20share%20availability." target="_blank" class="btn-gold">⚡ Book Now</a>
+      
+      <a href="https://wa.me/918185989721" target="_blank" class="btn-whatsapp">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num counter" data-target="150">0</div>
+        <div class="hero-stat-label">Happy Tenants</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num counter" data-target="60">0</div>
+        <div class="hero-stat-label">Total Rooms</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-label">Premium Amenities</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4.9★</div>
+        <div class="hero-stat-label">Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+    <span class="hero-scroll-text">Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="features-track" id="featuresTrack">
+    <div class="feature-chip"><span class="dot"></span>Free High-Speed WiFi</div>
+    <div class="feature-chip"><span class="dot"></span>Daily Housekeeping</div>
+    <div class="feature-chip"><span class="dot"></span>24/7 CCTV Security</div>
+    <div class="feature-chip"><span class="dot"></span>Fully Equipped Gym</div>
+    <div class="feature-chip"><span class="dot"></span>Free Parking</div>
+    <div class="feature-chip"><span class="dot"></span>Self Kitchen</div>
+    <div class="feature-chip"><span class="dot"></span>Rooftop Terrace</div>
+    <div class="feature-chip"><span class="dot"></span>AC Rooms Available</div>
+    <div class="feature-chip"><span class="dot"></span>Home-Cooked Meals</div>
+    <div class="feature-chip"><span class="dot"></span>Near Hitech City</div>
+    <div class="feature-chip"><span class="dot"></span>Free High-Speed WiFi</div>
+    <div class="feature-chip"><span class="dot"></span>Daily Housekeeping</div>
+    <div class="feature-chip"><span class="dot"></span>24/7 CCTV Security</div>
+    <div class="feature-chip"><span class="dot"></span>Fully Equipped Gym</div>
+    <div class="feature-chip"><span class="dot"></span>Free Parking</div>
+    <div class="feature-chip"><span class="dot"></span>Self Kitchen</div>
+    <div class="feature-chip"><span class="dot"></span>Rooftop Terrace</div>
+    <div class="feature-chip"><span class="dot"></span>AC Rooms Available</div>
+    <div class="feature-chip"><span class="dot"></span>Home-Cooked Meals</div>
+    <div class="feature-chip"><span class="dot"></span>Near Hitech City</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-img-main" style="background: linear-gradient(135deg, #1a1a20 0%, #111113 100%); display:flex; align-items:center; justify-content:center; height:100%;">
+        <div style="text-align:center; color: rgba(201,168,76,0.4);">
+          <div style="font-size:5rem;">🏢</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; margin-top:1rem;">Swag Colive</div>
+          <div style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; margin-top:0.5rem; color: rgba(201,168,76,0.3);">Madhapur, Hyderabad</div>
+        </div>
+      </div>
+      <div class="about-img-overlay"></div>
+      <div class="about-accent-card">
+        <div class="about-accent-num">2023</div>
+        <div class="about-accent-text">Year Founded</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-tag">Our Story</div>
+      <h2 class="section-title">Where <em>Premium</em><br>Living Begins</h2>
+      <div class="gold-line"></div>
+      <p class="section-sub">Swag Colive was born from a vision: that working professionals in Hyderabad deserve more than just a bed. They deserve a lifestyle. Located in the heart of Madhapur, steps from India's largest IT corridor, we've crafted a sanctuary for the ambitious.</p>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🏛️</div>
+          <div>
+            <div class="pillar-title">Luxury Architecture</div>
+            <div class="pillar-desc">6-floor premium building with marble corridors, designer lighting, and thoughtfully crafted spaces.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <div>
+            <div class="pillar-title">Fort-Level Security</div>
+            <div class="pillar-desc">24/7 CCTV surveillance across all floors, biometric access, and professional security staff.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🍽️</div>
+          <div>
+            <div class="pillar-title">Home-Style Dining</div>
+            <div class="pillar-desc">Daily freshly cooked meals with variety — because great work begins with great nutrition.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌐</div>
+          <div>
+            <div class="pillar-title">Hyderabad's Best Location</div>
+            <div class="pillar-desc">5 min from Hitech City, walking distance to tech parks, metro, malls, and restaurants.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+  <div class="rooms-header reveal">
+    <div class="section-tag">Accommodation</div>
+    <h2 class="section-title">Choose Your <em>Perfect</em> Room</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">From cozy sharing to exclusive couple suites — every room is designed for comfort and productivity.</p>
+    <div class="room-filters">
+      <button class="filter-btn active" onclick="filterRooms('all', this)">All Rooms</button>
+      <button class="filter-btn" onclick="filterRooms('2sharing', this)">2 Sharing</button>
+      <button class="filter-btn" onclick="filterRooms('3sharing', this)">3 Sharing</button>
+      <button class="filter-btn" onclick="filterRooms('couple', this)">Couple Rooms</button>
+      <button class="filter-btn" onclick="filterRooms('ac', this)">AC</button>
+      <button class="filter-btn" onclick="filterRooms('nonac', this)">Non-AC</button>
+      <button class="filter-btn" onclick="filterRooms('available', this)">Available Only</button>
+    </div>
+  </div>
+  <div class="rooms-grid" id="roomsGrid"></div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="reveal" style="text-align:center; max-width:600px; margin: 0 auto;">
+    <div class="section-tag">Transparent Pricing</div>
+    <h2 class="section-title">Luxury <em>Made</em> Affordable</h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+    <p class="section-sub" style="margin:0 auto;">All-inclusive pricing with no hidden charges. What you see is what you pay.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-label">3 Sharing</div>
+      <div class="price-main"><sup>₹</sup>13,000</div>
+      <div class="price-period">per month · AC</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Rooms 401-414, 501-514</li>
+        <li>Split AC cooling</li>
+        <li>3 beds per room</li>
+        <li>Attached bathroom</li>
+        <li>All amenities included</li>
+      </ul>
+      <div class="deposit-note">Deposit: <strong>₹6,500</strong> | Refund: <strong>₹4,500</strong></div>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-label">3 Sharing</div>
+      <div class="price-main"><sup>₹</sup>11,000</div>
+      <div class="price-period">per month · Non-AC</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Rooms 401-414, 501-514</li>
+        <li>Ceiling fan + ventilation</li>
+        <li>3 beds per room</li>
+        <li>Attached bathroom</li>
+        <li>All amenities included</li>
+      </ul>
+      <div class="deposit-note">Deposit: <strong>₹6,500</strong> | Refund: <strong>₹4,500</strong></div>
+    </div>
+    <div class="price-card featured reveal">
+      <div class="featured-badge">Popular</div>
+      <div class="price-label">2 Sharing</div>
+      <div class="price-main"><sup>₹</sup>16,500</div>
+      <div class="price-period">per month · AC</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Rooms 101-114, 201-214, 301-314</li>
+        <li>Split AC cooling</li>
+        <li>2 beds per room</li>
+        <li>Attached bathroom</li>
+        <li>More personal space</li>
+        <li>All amenities included</li>
+      </ul>
+      <div class="deposit-note">Deposit: <strong>₹6,500</strong> | Refund: <strong>₹4,500</strong></div>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-label">2 Sharing</div>
+      <div class="price-main"><sup>₹</sup>14,500</div>
+      <div class="price-period">per month · Non-AC</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Rooms 101-114, 201-214, 301-314</li>
+        <li>Ceiling fan + ventilation</li>
+        <li>2 beds per room</li>
+        <li>Attached bathroom</li>
+        <li>All amenities included</li>
+      </ul>
+      <div class="deposit-note">Deposit: <strong>₹6,500</strong> | Refund: <strong>₹4,500</strong></div>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-label">Couple Room</div>
+      <div class="price-main"><sup>₹</sup>30,000</div>
+      <div class="price-period">per month · AC</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Rooms 601-604</li>
+        <li>Private exclusive suite</li>
+        <li>Double bed</li>
+        <li>En-suite bathroom</li>
+        <li>Maximum privacy</li>
+        <li>All premium amenities</li>
+      </ul>
+      <div class="deposit-note">Deposit: <strong>₹10,000</strong> | Refund: <strong>₹8,000</strong></div>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-label">Couple Room</div>
+      <div class="price-main"><sup>₹</sup>28,000</div>
+      <div class="price-period">per month · Non-AC</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Rooms 601-604</li>
+        <li>Private exclusive suite</li>
+        <li>Double bed</li>
+        <li>En-suite bathroom</li>
+        <li>Maximum privacy</li>
+        <li>All premium amenities</li>
+      </ul>
+      <div class="deposit-note">Deposit: <strong>₹10,000</strong> | Refund: <strong>₹8,000</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="reveal" style="text-align:center; max-width:600px; margin: 0 auto 2rem;">
+    <div class="section-tag">Premium Facilities</div>
+    <h2 class="section-title">Everything You <em>Need</em></h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+    <p class="section-sub" style="margin:0 auto;">15+ world-class amenities included in your rent. No hidden charges, ever.</p>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity-card reveal"><div class="amenity-icon">📹</div><div class="amenity-name">24/7 CCTV</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">🅿️</div><div class="amenity-name">Free Parking</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">🏋️</div><div class="amenity-name">Gym</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">🍳</div><div class="amenity-name">Self Kitchen</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">🌇</div><div class="amenity-name">Terrace View</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">🧺</div><div class="amenity-name">Washing Machines</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">☕</div><div class="amenity-name">Tea Machine</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">☕</div><div class="amenity-name">Coffee Machine</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">❄️</div><div class="amenity-name">Fridge</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">💧</div><div class="amenity-name">Water Dispenser</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">📺</div><div class="amenity-name">Smart TV</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">📶</div><div class="amenity-name">Free WiFi</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">💻</div><div class="amenity-name">Work Station</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">🚿</div><div class="amenity-name">Geyser</div></div>
+    <div class="amenity-card reveal"><div class="amenity-icon">🧹</div><div class="amenity-name">Daily Cleaning</div></div>
+  </div>
+</section>
+
+<!-- FOOD MENU -->
+<section id="food">
+  <div class="reveal" style="text-align:center; max-width:600px; margin: 0 auto 2rem;">
+    <div class="section-tag">Dining Experience</div>
+    <h2 class="section-title">Fresh, <em>Nutritious</em> Every Day</h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+    <p class="section-sub" style="margin:0 auto;">Home-cooked meals prepared daily. Weekly chicken & eggs, daily chapati dinner, and fresh breakfast tiffin.</p>
+  </div>
+  <div class="food-week-grid" id="foodGrid"></div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="reveal" style="max-width:600px; margin-bottom:2rem;">
+    <div class="section-tag">Visual Tour</div>
+    <h2 class="section-title">See It to <em>Believe</em> It</h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="gallery-filters">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn" onclick="filterGallery('rooms',this)">Rooms</button>
+    <button class="filter-btn" onclick="filterGallery('amenities',this)">Amenities</button>
+    <button class="filter-btn" onclick="filterGallery('common',this)">Common Areas</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal" style="text-align:center; max-width:600px; margin: 0 auto 2rem;">
+    <div class="section-tag">Resident Reviews</div>
+    <h2 class="section-title">Loved by <em>Professionals</em></h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I've stayed in multiple PGs across Hyderabad, but Swag is on another level. The cleanliness, security, and community here is unmatched. Best decision I made moving here."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">RK</div>
+        <div><div class="author-name">Rahul Kumar</div><div class="author-role">Senior Software Engineer · TCS</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"The gym, rooftop terrace, and fast WiFi make this feel like a luxury hotel. The food is amazing and the management is super responsive. Highly recommend to IT folks!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">PS</div>
+        <div><div class="author-name">Priya Sharma</div><div class="author-role">Product Manager · Infosys</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Perfect location — 10 minutes from my office in Hitech City. The rooms are spacious, the marble bathrooms are premium, and the community events are great for networking."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AV</div>
+        <div><div class="author-name">Arjun Verma</div><div class="author-role">Startup Founder · YC Alumni</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="reveal" style="text-align:center; max-width:600px; margin: 0 auto 2rem;">
+    <div class="section-tag">Our Advantage</div>
+    <h2 class="section-title">Why <em>Swag</em> Wins Every Time</h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">📍</div>
+      <div class="why-title">Prime Location</div>
+      <div class="why-desc">5 minutes from Hitech City, walking distance to Cyber Towers, and connectivity to all major IT parks.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🏆</div>
+      <div class="why-title">5-Star Cleanliness</div>
+      <div class="why-desc">Professional daily housekeeping, pest control, and hygiene standards that rival luxury hotels.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🤝</div>
+      <div class="why-title">Community First</div>
+      <div class="why-desc">A curated community of like-minded professionals. Network, collaborate, and grow together.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">⚡</div>
+      <div class="why-title">Zero Downtime WiFi</div>
+      <div class="why-desc">High-speed broadband with backup connection. Work-from-home without interruptions, ever.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Transparent Billing</div>
+      <div class="why-desc">No surprise charges. Fixed monthly rent includes all utilities, cleaning, and maintenance.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🎯</div>
+      <div class="why-title">Quick Response</div>
+      <div class="why-desc">Dedicated management team available 24/7 on WhatsApp for any complaints or requirements.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEARBY IT COMPANIES -->
+<section id="nearby">
+  <div class="reveal" style="text-align:center; max-width:600px; margin: 0 auto 2rem;">
+    <div class="section-tag">Location Advantage</div>
+    <h2 class="section-title">Minutes from <em>Top</em> IT Parks</h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+  </div>
+  <div class="nearby-grid">
+    <div class="nearby-card reveal"><div class="nearby-dist">2 min</div><div class="nearby-name">Hitech City</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">3 min</div><div class="nearby-name">Cyber Towers</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">5 min</div><div class="nearby-name">DLF Cyber City</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">5 min</div><div class="nearby-name">Mindspace IT Park</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">7 min</div><div class="nearby-name">Microsoft Campus</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">8 min</div><div class="nearby-name">Google Hyderabad</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">8 min</div><div class="nearby-name">Amazon Campus</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">10 min</div><div class="nearby-name">Financial District</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">10 min</div><div class="nearby-name">Gachibowli Stadium</div></div>
+    <div class="nearby-card reveal"><div class="nearby-dist">12 min</div><div class="nearby-name">HITEC Metro Station</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="reveal">
+        <div class="section-tag">Get in Touch</div>
+        <h2 class="section-title">Visit or <em>Call</em> Us Today</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="contact-info reveal">
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">Plot No 1142, Rd Number 56,<br>near CGR International School,<br>Ayyappa Society, Mega Hills,<br>Madhapur, Hyderabad – 500081</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+91 81859 89721</div>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a href="tel:+918185989721" class="contact-btn">
+            <div class="contact-btn-icon">📞</div>
+            <div>
+              <div class="contact-btn-label">Call Now</div>
+              <div class="contact-btn-text">+91 81859 89721</div>
+            </div>
+          </a>
+          <a href="https://wa.me/918185989721?text=Hi%2C%20I%20am%20interested%20in%20Swag%20Colive.%20Please%20share%20room%20availability%20and%20details." target="_blank" class="contact-btn whatsapp">
+            <div class="contact-btn-icon">💬</div>
+            <div>
+              <div class="contact-btn-label">WhatsApp</div>
+              <div class="contact-btn-text">Chat with us instantly</div>
+            </div>
+          </a>
+          <a href="https://www.google.com/maps/place/Swag+Colive+PG" target="_blank" class="contact-btn">
+            <div class="contact-btn-icon">🗺️</div>
+            <div>
+              <div class="contact-btn-label">Get Directions</div>
+              <div class="contact-btn-text">Open in Google Maps</div>
+            </div>
+          </a>
+          <a href="#" onclick="showLogin()" class="contact-btn">
+            <div class="contact-btn-icon">⚙️</div>
+            <div>
+              <div class="contact-btn-label">Admin Access</div>
+              <div class="contact-btn-text">Staff Login</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrap reveal">
+      <div class="form-title">Send an Enquiry</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mobile Number</label>
+          <input type="tel" class="form-input" placeholder="+91">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Room Preference</label>
+        <select class="form-select">
+          <option value="">Select room type</option>
+          <option>2 Sharing AC – ₹16,500/month</option>
+          <option>2 Sharing Non-AC – ₹14,500/month</option>
+          <option>3 Sharing AC – ₹13,000/month</option>
+          <option>3 Sharing Non-AC – ₹11,000/month</option>
+          <option>Couple Room AC – ₹30,000/month</option>
+          <option>Couple Room Non-AC – ₹28,000/month</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Move-in Date</label>
+        <input type="date" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell us about yourself and your requirements..."></textarea>
+      </div>
+      <button class="btn-gold" style="width:100%; justify-content:center;" onclick="submitEnquiry()">Send Enquiry via WhatsApp →</button>
+    </div>
+  </div>
+  <div class="map-wrap reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7!2d78.3885!3d17.4474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93b46d6e3f9f%3A0x0!2sSwag+Colive+PG!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="reveal" style="text-align:center; max-width:600px; margin: 0 auto 2rem;">
+    <div class="section-tag">Common Questions</div>
+    <h2 class="section-title">Frequently <em>Asked</em></h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+  </div>
+  <div class="faq-list" id="faqList"></div>
+</section>
+
+<!-- FLOATING BUTTONS -->
+<div class="floats">
+  <a href="https://wa.me/918185989721?text=Hi%2C%20I%20am%20interested%20in%20Swag%20Colive.%20Please%20share%20availability." target="_blank" class="float-btn float-wa" title="WhatsApp Us">💬</a>
+  <a href="tel:+918185989721" class="float-btn float-call" title="Call Us">📞</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">SWAG</div>
+      <p class="footer-brand-desc">Hyderabad's most premium co-living space for IT professionals and corporate achievers. Luxury, community, and convenience — all under one roof.</p>
+      <div style="margin-top:1.5rem; display:flex; gap:0.8rem;">
+        <a href="https://wa.me/918185989721" target="_blank" style="width:38px;height:38px;background:var(--glass);border:1px solid var(--glass-border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--glass-border)'">💬</a>
+        <a href="tel:+918185989721" style="width:38px;height:38px;background:var(--glass);border:1px solid var(--glass-border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--glass-border)'">📞</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Navigation</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#rooms">Our Rooms</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Room Types</div>
+      <ul class="footer-links">
+        <li><a href="#rooms">2 Sharing AC</a></li>
+        <li><a href="#rooms">2 Sharing Non-AC</a></li>
+        <li><a href="#rooms">3 Sharing AC</a></li>
+        <li><a href="#rooms">3 Sharing Non-AC</a></li>
+        <li><a href="#rooms">Couple Rooms</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:+918185989721">+91 81859 89721</a></li>
+        <li><a href="https://wa.me/918185989721" target="_blank">WhatsApp</a></li>
+        <li><a href="#">Madhapur, Hyderabad</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="#" onclick="showLogin()">Admin Login</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Swag | The Premium Co-live Space. All rights reserved.</span>
+    <span>Madhapur · Hyderabad · Telangana</span>
+  </div>
+</footer>
+
+<!-- ADMIN LOGIN OVERLAY -->
+<div id="login-overlay">
+  <div class="login-card">
+    <div class="login-title">Admin Login</div>
+    <div class="form-group">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-input" id="loginUser" placeholder="admin">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-input" id="loginPass" placeholder="••••••••">
+    </div>
+    <div class="login-error" id="loginError">Invalid credentials. Try admin / swag2024</div>
+    <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+      <button class="btn-gold" style="flex:1; justify-content:center;" onclick="doLogin()">Login</button>
+      <button class="btn-outline" style="flex:1; justify-content:center;" onclick="document.getElementById('login-overlay').classList.remove('open')">Cancel</button>
+    </div>
+    <p style="font-size:0.72rem; color: var(--text-muted); text-align:center; margin-top:1rem;">Demo: admin / swag2024</p>
+  </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div id="admin-section">
+  <div class="admin-sidebar">
+    <div class="admin-logo">⚡ SWAG Admin</div>
+    <div class="admin-nav">
+      <button class="admin-nav-btn active" onclick="showAdminSection('dashboard',this)">📊 Dashboard</button>
+      <button class="admin-nav-btn" onclick="showAdminSection('tenants',this)">👥 Tenants</button>
+      <button class="admin-nav-btn" onclick="showAdminSection('vacancy',this)">🏠 Vacancy</button>
+      <button class="admin-nav-btn" onclick="showAdminSection('complaints',this)">🔧 Complaints</button>
+    </div>
+    <div style="padding:1.5rem; margin-top:auto;">
+      <button class="admin-close" style="width:100%;" onclick="closeAdmin()">← Back to Website</button>
+    </div>
+  </div>
+  <div class="admin-main">
+    <div class="admin-header">
+      <div class="admin-title" id="adminTitle">Dashboard Overview</div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="admin-section active" id="section-dashboard">
+      <div class="admin-stats">
+        <div class="admin-stat-card"><div class="admin-stat-num">142</div><div class="admin-stat-label">Total Tenants</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num" style="color:#4ade80;">12</div><div class="admin-stat-label">Available Beds</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num" style="color:#fb923c;">5</div><div class="admin-stat-label">Pending Complaints</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num">₹18.5L</div><div class="admin-stat-label">Monthly Revenue</div></div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+        <div class="admin-table-wrap" style="padding:1.5rem;">
+          <div style="font-size:0.8rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1rem;">Recent Activity</div>
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+              <span>New tenant Aman Gupta – Room 203</span>
+              <span style="color:var(--text-muted); font-size:0.72rem;">Today</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+              <span>Complaint resolved – Room 412</span>
+              <span style="color:var(--text-muted); font-size:0.72rem;">Yesterday</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+              <span>Rent received – Room 305, 306</span>
+              <span style="color:var(--text-muted); font-size:0.72rem;">2 days ago</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+              <span>Room 601 vacated – Notice served</span>
+              <span style="color:var(--text-muted); font-size:0.72rem;">3 days ago</span>
+            </div>
+          </div>
+        </div>
+        <div class="admin-table-wrap" style="padding:1.5rem;">
+          <div style="font-size:0.8rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1rem;">Occupancy by Floor</div>
+          <div style="display:flex; flex-direction:column; gap:1rem;" id="occupancyBars"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TENANTS -->
+    <div class="admin-section" id="section-tenants">
+      <button class="add-btn" onclick="showAddTenant()">+ Add New Tenant</button>
+      <div class="admin-table-wrap">
+        <table id="tenantTable">
+          <thead>
+            <tr>
+              <th>Name</th><th>Room</th><th>Mobile</th><th>Rent</th><th>Payment</th><th>Notice</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tenantTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VACANCY -->
+    <div class="admin-section" id="section-vacancy">
+      <div class="admin-stats" style="margin-bottom:2rem;">
+        <div class="admin-stat-card"><div class="admin-stat-num">168</div><div class="admin-stat-label">Total Beds</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num">156</div><div class="admin-stat-label">Occupied</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num" style="color:#4ade80;">12</div><div class="admin-stat-label">Available</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num">92.9%</div><div class="admin-stat-label">Occupancy Rate</div></div>
+      </div>
+      <div class="vacancy-bars" id="vacancyBars"></div>
+    </div>
+
+    <!-- COMPLAINTS -->
+    <div class="admin-section" id="section-complaints">
+      <div class="admin-table-wrap">
+        <table>
+          <thead>
+            <tr><th>Tenant</th><th>Room</th><th>Issue</th><th>Date</th><th>Status</th><th>Action</th></tr>
+          </thead>
+          <tbody id="complaintsTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ADD TENANT -->
+<div class="modal-bg" id="addTenantModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="document.getElementById('addTenantModal').classList.remove('open')">×</button>
+    <div class="form-title" style="font-size:1.5rem; margin-bottom:1.5rem;">Add New Tenant</div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="tName" placeholder="Tenant name"></div>
+      <div class="form-group"><label class="form-label">Mobile</label><input type="tel" class="form-input" id="tMobile" placeholder="+91"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Room Number</label><input type="text" class="form-input" id="tRoom" placeholder="e.g. 203"></div>
+      <div class="form-group"><label class="form-label">Monthly Rent</label><input type="number" class="form-input" id="tRent" placeholder="16500"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Security Deposit</label><input type="number" class="form-input" id="tDeposit" placeholder="6500"></div>
+      <div class="form-group"><label class="form-label">Date of Joining</label><input type="date" class="form-input" id="tJoining"></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Address</label>
+      <input type="text" class="form-input" id="tAddress" placeholder="Permanent address">
+    </div>
+    <div style="display:flex; gap:1rem; margin-top:1rem;">
+      <button class="btn-gold" style="flex:1; justify-content:center;" onclick="addTenant()">Add Tenant</button>
+      <button class="btn-outline" style="flex:1; justify-content:center;" onclick="document.getElementById('addTenantModal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="this.classList.remove('open')">
+  <button id="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">×</button>
+  <div style="font-size:5rem;" id="lightbox-img">🏢</div>
+</div>
+
+<script>
+// ─── DATA ───
+const rooms = [
+  { id:'101', floor:1, type:'2sharing', ac:true,  price:16500, status:'available', emoji:'🛏️' },
+  { id:'102', floor:1, type:'2sharing', ac:false, price:14500, status:'occupied',  emoji:'🛏️' },
+  { id:'103', floor:1, type:'2sharing', ac:true,  price:16500, status:'available', emoji:'🛏️' },
+  { id:'201', floor:2, type:'2sharing', ac:true,  price:16500, status:'occupied',  emoji:'🛏️' },
+  { id:'203', floor:2, type:'2sharing', ac:false, price:14500, status:'available', emoji:'🛏️' },
+  { id:'301', floor:3, type:'2sharing', ac:true,  price:16500, status:'limited',   emoji:'🛏️' },
+  { id:'401', floor:4, type:'3sharing', ac:true,  price:13000, status:'available', emoji:'🛏️' },
+  { id:'402', floor:4, type:'3sharing', ac:false, price:11000, status:'occupied',  emoji:'🛏️' },
+  { id:'501', floor:5, type:'3sharing', ac:true,  price:13000, status:'limited',   emoji:'🛏️' },
+  { id:'502', floor:5, type:'3sharing', ac:false, price:11000, status:'available', emoji:'🛏️' },
+  { id:'601', floor:6, type:'couple',   ac:true,  price:30000, status:'available', emoji:'💑' },
+  { id:'602', floor:6, type:'couple',   ac:false, price:28000, status:'occupied',  emoji:'💑' },
+];
+
+let tenants = [
+  { id:1, name:'Rahul Kumar',   room:'203', mobile:'9876543210', rent:16500, deposit:6500, joining:'2024-01-15', payment:'paid',    notice:false, address:'Vijayawada, AP' },
+  { id:2, name:'Priya Sharma',  room:'301', mobile:'9876543211', rent:16500, deposit:6500, joining:'2024-02-01', payment:'pending', notice:false, address:'Bangalore, KA' },
+  { id:3, name:'Arjun Verma',   room:'401', mobile:'9876543212', rent:13000, deposit:6500, joining:'2024-03-10', payment:'paid',    notice:true,  address:'Pune, MH' },
+  { id:4, name:'Sneha Reddy',   room:'501', mobile:'9876543213', rent:13000, deposit:6500, joining:'2024-01-20', payment:'paid',    notice:false, address:'Chennai, TN' },
+  { id:5, name:'Karthik Rao',   room:'601', mobile:'9876543214', rent:30000, deposit:10000, joining:'2024-04-05', payment:'pending', notice:false, address:'Hyderabad, TS' },
+];
+
+let complaints = [
+  { id:1, tenant:'Rahul Kumar',  room:'203', issue:'WiFi slow in room',    date:'2024-05-10', status:'open' },
+  { id:2, tenant:'Priya Sharma', room:'301', issue:'Geyser not working',   date:'2024-05-09', status:'resolved' },
+  { id:3, tenant:'Arjun Verma',  room:'401', issue:'Cleaning missed',      date:'2024-05-11', status:'open' },
+  { id:4, tenant:'Sneha Reddy',  room:'501', issue:'Water pressure low',   date:'2024-05-08', status:'resolved' },
+];
+
+const foodMenu = [
+  { day:'Mon', meals:{ breakfast:'Idli & Sambar 🫕', lunch:'Rice + Dal + Sabzi 🍛', dinner:'Chapati + Curry 🫓' } },
+  { day:'Tue', meals:{ breakfast:'Upma & Chutney 🥣', lunch:'Chicken Curry + Rice 🍗', dinner:'Chapati + Dal Fry 🫓', special:'🍗 Chicken Day' } },
+  { day:'Wed', meals:{ breakfast:'Dosa & Sambar 🫕', lunch:'Egg Curry + Rice 🥚', dinner:'Chapati + Mix Veg 🫓', special:'🥚 Egg Day' } },
+  { day:'Thu', meals:{ breakfast:'Poha & Tea ☕', lunch:'Rice + Dal + Pickle 🍛', dinner:'Chapati + Paneer 🫓' } },
+  { day:'Fri', meals:{ breakfast:'Puri & Sabzi 🍽️', lunch:'Chicken Biryani 🍗', dinner:'Chapati + Curry 🫓', special:'🍗 Chicken Day' } },
+  { day:'Sat', meals:{ breakfast:'Idli & Vada 🍽️', lunch:'Egg Fried Rice 🍳', dinner:'Chapati + Dal 🫓', special:'🥚 Egg Day' } },
+  { day:'Sun', meals:{ breakfast:'Paratha & Curd 🫓', lunch:'Special Biryani 🍛', dinner:'Chapati + Paneer 🧀', special:'⭐ Special' } },
+];
+
+const faqData = [
+  { q: 'What is included in the monthly rent?', a: 'Rent includes WiFi, daily housekeeping, water, and access to all amenities — gym, terrace, parking, washing machines, and common areas.' },
+  { q: 'What is the security deposit and refund policy?', a: 'Deposit is ₹6,500 for sharing rooms (₹10,000 for couple rooms). Refund is ₹4,500/₹8,000 respectively, after deduction for any damages, upon proper notice.' },
+  { q: 'Is food included in the rent?', a: 'Food is available at an additional charge. We serve breakfast, lunch, and dinner daily with weekly chicken and egg specials.' },
+  { q: 'What is the notice period for vacating?', a: 'One month notice is required. Notice given on the 1st of the month counts for the same month.' },
+  { q: 'Are couples allowed?', a: 'Yes! We have dedicated couple rooms on the 6th floor (601–604) with complete privacy and premium amenities.' },
+  { q: 'Is the building safe for women?', a: 'Absolutely. 24/7 CCTV, biometric access on all floors, and strict visitor policy ensure a completely safe environment for all residents.' },
+  { q: 'How close is it to Hitech City?', a: 'Swag Colive is just 2-5 minutes from Hitech City, Cyber Towers, DLF Cyber City, and most major IT parks in the area.' },
+];
+
+const galleryItems = [
+  { label:'Building Exterior', emoji:'🏢', cat:'common', tall:true },
+  { label:'Gym Facility', emoji:'🏋️', cat:'amenities' },
+  { label:'Rooftop Terrace', emoji:'🌇', cat:'amenities', tall:true },
+  { label:'Marble Corridors', emoji:'🏛️', cat:'common' },
+  { label:'Premium Bathroom', emoji:'🚿', cat:'rooms' },
+  { label:'Dining Area', emoji:'🍽️', cat:'common', tall:true },
+  { label:'CCTV Room', emoji:'📹', cat:'amenities' },
+  { label:'Parking Area', emoji:'🅿️', cat:'common' },
+  { label:'Serene Garden', emoji:'🌿', cat:'common', tall:true },
+  { label:'Luxury Interiors', emoji:'✨', cat:'rooms' },
+  { label:'Work Station', emoji:'💻', cat:'amenities' },
+  { label:'Cozy Rooms', emoji:'🛏️', cat:'rooms', tall:true },
+];
+
+// ─── INIT ───
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2000);
+  
+  createParticles();
+  renderRooms('all');
+  renderFoodMenu();
+  renderGallery('all');
+  renderFAQ();
+  renderAdminData();
+  initCounters();
+  initScrollReveal();
+  initOccupancyBars();
+});
+
+// ─── CURSOR ───
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    cursorRing.style.left = e.clientX + 'px';
+    cursorRing.style.top = e.clientY + 'px';
+  }, 80);
+});
+document.addEventListener('mousedown', () => { cursor.style.width='16px'; cursor.style.height='16px'; });
+document.addEventListener('mouseup', () => { cursor.style.width='8px'; cursor.style.height='8px'; });
+
+// ─── PARTICLES ───
+function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${8 + Math.random()*15}s;
+      animation-delay:${Math.random()*8}s;
+      opacity:0;
+    `;
+    container.appendChild(p);
+  }
+}
+
+// ─── NAVBAR ───
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── MOBILE MENU ───
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ─── COUNTER ANIMATION ───
+function initCounters() {
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(c => {
+    const target = parseInt(c.dataset.target);
+    let count = 0;
+    const step = target / 80;
+    const timer = setInterval(() => {
+      count += step;
+      if (count >= target) { c.textContent = target + '+'; clearInterval(timer); }
+      else c.textContent = Math.floor(count) + '+';
+    }, 25);
+  });
+}
+
+// ─── SCROLL REVEAL ───
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => io.observe(r));
+}
+
+// ─── ROOMS ───
+function renderRooms(filter) {
+  const grid = document.getElementById('roomsGrid');
+  const filtered = rooms.filter(r => {
+    if (filter === 'all') return true;
+    if (filter === 'ac') return r.ac;
+    if (filter === 'nonac') return !r.ac;
+    if (filter === 'available') return r.status === 'available';
+    return r.type === filter;
+  });
+  
+  grid.innerHTML = filtered.map(r => `
+    <div class="room-card reveal" onclick="">
+      <div class="room-img">
+        <div class="room-img-bg"></div>
+        <div class="room-img-placeholder">${r.emoji}</div>
+        <div class="room-badges">
+          <span class="badge ${r.ac ? 'badge-ac' : 'badge-nonac'}">${r.ac ? '❄️ AC' : 'Non-AC'}</span>
+          <span class="badge badge-${r.status}">${r.status === 'available' ? '● Available' : r.status === 'limited' ? '◑ Limited' : '● Full'}</span>
+        </div>
+      </div>
+      <div class="room-info">
+        <div class="room-type">${r.type === '2sharing' ? '2 Sharing' : r.type === '3sharing' ? '3 Sharing' : 'Couple Suite'} · Floor ${r.floor}</div>
+        <div class="room-name">Room ${r.id}</div>
+        <div class="room-price">
+          <span class="room-price-num">₹${r.price.toLocaleString()}</span>
+          <span class="room-price-unit">/ month</span>
+        </div>
+        <div class="room-amenities">
+          <span class="amenity-tag">📶 WiFi</span>
+          <span class="amenity-tag">🍳 Kitchen</span>
+          <span class="amenity-tag">🧹 Cleaning</span>
+          ${r.ac ? '<span class="amenity-tag">❄️ AC</span>' : ''}
+        </div>
+        <a href="https://wa.me/918185989721?text=Hi%2C%20I%20am%20interested%20in%20${encodeURIComponent(r.type === '2sharing' ? '2-Sharing' : r.type === '3sharing' ? '3-Sharing' : 'Couple')}-${r.ac ? 'AC' : 'Non-AC'}%20room%20${r.id}%20at%20Swag%20Colive.%20Please%20share%20availability%20details." target="_blank" class="room-cta">
+          💬 Enquire on WhatsApp
+        </a>
+      </div>
+    </div>
+  `).join('');
+  
+  // re-trigger reveals
+  setTimeout(() => {
+    grid.querySelectorAll('.reveal').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  }, 50);
+}
+
+function filterRooms(filter, btn) {
+  document.querySelectorAll('.room-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRooms(filter);
+}
+
+// ─── FOOD MENU ───
+function renderFoodMenu() {
+  const today = new Date().getDay();
+  const dayMap = [0,1,2,3,4,5,6]; // Sun=0
+  const grid = document.getElementById('foodGrid');
+  
+  grid.innerHTML = foodMenu.map((d, i) => `
+    <div class="day-card reveal ${i === (today === 0 ? 6 : today - 1) ? 'today' : ''}">
+      <div class="day-name">${d.day}${i === (today === 0 ? 6 : today - 1) ? ' ★' : ''}</div>
+      ${d.meals.special ? `<div style="text-align:center; font-size:0.7rem; color:var(--gold); margin-bottom:0.8rem;">${d.meals.special}</div>` : ''}
+      <div class="meal-item">
+        <div class="meal-label">Breakfast</div>
+        <div class="meal-name">${d.meals.breakfast}</div>
+      </div>
+      <div class="meal-item">
+        <div class="meal-label">Lunch</div>
+        <div class="meal-name">${d.meals.lunch}</div>
+      </div>
+      <div class="meal-item">
+        <div class="meal-label">Dinner</div>
+        <div class="meal-name">${d.meals.dinner}</div>
+      </div>
+    </div>
+  `).join('');
+  
+  setTimeout(() => {
+    grid.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }, 100);
+}
+
+// ─── GALLERY ───
+function renderGallery(filter) {
+  const grid = document.getElementById('galleryGrid');
+  const items = filter === 'all' ? galleryItems : galleryItems.filter(g => g.cat === filter);
+  
+  grid.innerHTML = items.map((g, i) => `
+    <div class="gallery-item" onclick="openLightbox('${g.emoji}', '${g.label}')">
+      <div class="gallery-img-inner" style="padding-bottom: ${g.tall ? '130%' : '75%'};">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a20,#111113);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+          <div style="font-size:3rem;">${g.emoji}</div>
+          <div style="font-size:0.7rem;color:rgba(201,168,76,0.5);letter-spacing:0.12em;text-transform:uppercase;">${g.label}</div>
+        </div>
+      </div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-icon">🔍</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.gallery-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery(cat);
+}
+
+function openLightbox(emoji, label) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').innerHTML = `<div style="text-align:center;"><div style="font-size:8rem;">${emoji}</div><div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);margin-top:1rem;">${label}</div><div style="font-size:0.8rem;color:rgba(245,240,232,0.4);margin-top:0.5rem;letter-spacing:0.2em;text-transform:uppercase;">Swag Colive · Madhapur, Hyderabad</div></div>`;
+  lb.classList.add('open');
+}
+
+// ─── FAQ ───
+function renderFAQ() {
+  const list = document.getElementById('faqList');
+  list.innerHTML = faqData.map((f,i) => `
+    <div class="faq-item reveal" id="faq-${i}">
+      <div class="faq-q" onclick="toggleFAQ(${i})">
+        <span>${f.q}</span>
+        <span class="faq-chevron">▾</span>
+      </div>
+      <div class="faq-a">${f.a}</div>
+    </div>
+  `).join('');
+  setTimeout(() => { list.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }, 100);
+}
+
+function toggleFAQ(i) {
+  const item = document.getElementById('faq-' + i);
+  item.classList.toggle('open');
+}
+
+// ─── ADMIN ───
+function showLogin() { document.getElementById('login-overlay').classList.add('open'); }
+
+function doLogin() {
+  const u = document.getElementById('loginUser').value;
+  const p = document.getElementById('loginPass').value;
+  if (u === 'admin' && p === 'swag2024') {
+    document.getElementById('login-overlay').classList.remove('open');
+    document.getElementById('admin-section').classList.add('open');
+    renderAdminData();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+
+function closeAdmin() {
+  document.getElementById('admin-section').classList.remove('open');
+}
+
+function showAdminSection(sec, btn) {
+  document.querySelectorAll('.admin-nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + sec).classList.add('active');
+  const titles = { dashboard:'Dashboard Overview', tenants:'Tenant Management', vacancy:'Vacancy Tracker', complaints:'Complaints' };
+  document.getElementById('adminTitle').textContent = titles[sec];
+}
+
+function renderAdminData() {
+  renderTenants();
+  renderVacancy();
+  renderComplaints();
+}
+
+function renderTenants() {
+  const tbody = document.getElementById('tenantTbody');
+  tbody.innerHTML = tenants.map(t => `
+    <tr>
+      <td>${t.name}</td>
+      <td>Room ${t.room}</td>
+      <td>${t.mobile}</td>
+      <td>₹${t.rent.toLocaleString()}</td>
+      <td class="status-${t.payment}">${t.payment === 'paid' ? '✓ Paid' : '⚠ Pending'}</td>
+      <td>${t.notice ? '<span style="color:#fb923c;">⚡ Given</span>' : '—'}</td>
+      <td style="display:flex;gap:0.4rem;">
+        <button class="action-btn edit" onclick="editTenant(${t.id})">Edit</button>
+        <button class="action-btn delete" onclick="deleteTenant(${t.id})">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderVacancy() {
+  const floors = [
+    { label:'Floor 1 (Rooms 101-114)', total:28, occupied:24 },
+    { label:'Floor 2 (Rooms 201-214)', total:28, occupied:26 },
+    { label:'Floor 3 (Rooms 301-314)', total:28, occupied:25 },
+    { label:'Floor 4 (Rooms 401-414)', total:42, occupied:40 },
+    { label:'Floor 5 (Rooms 501-514)', total:42, occupied:38 },
+    { label:'Floor 6 (Couple 601-604)', total:8, occupied:3 },
+  ];
+  
+  document.getElementById('vacancyBars').innerHTML = floors.map(f => {
+    const pct = Math.round(f.occupied/f.total*100);
+    const cls = pct >= 90 ? 'full' : pct >= 70 ? 'partial' : 'empty';
+    return `
+      <div class="vac-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div style="font-size:0.82rem;font-weight:500;">${f.label}</div>
+          <div style="font-size:0.72rem;color:var(--gold);">${f.total - f.occupied} free</div>
+        </div>
+        <div class="vac-bar-wrap">
+          <div class="vac-bar ${cls}" style="width:${pct}%"></div>
+        </div>
+        <div style="font-size:0.72rem;color:var(--text-muted);">${f.occupied}/${f.total} occupied · ${pct}%</div>
+      </div>
+    `;
+  }).join('');
+  
+  // Occupancy by floor bars in dashboard
+  document.getElementById('occupancyBars').innerHTML = floors.map(f => {
+    const pct = Math.round(f.occupied/f.total*100);
+    return `
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;">
+          <span>${f.label.split('(')[0]}</span><span>${pct}%</span>
+        </div>
+        <div class="vac-bar-wrap"><div class="vac-bar ${pct>=90?'full':pct>=70?'partial':'empty'}" style="width:${pct}%"></div></div>
+      </div>
+    `;
+  }).join('');
+}
+
+function initOccupancyBars() {
+  setTimeout(() => {
+    document.querySelectorAll('.vac-bar').forEach(b => {
+      const target = b.style.width; b.style.width = '0'; 
+      setTimeout(() => b.style.width = target, 300);
+    });
+  }, 500);
+}
+
+function renderComplaints() {
+  document.getElementById('complaintsTbody').innerHTML = complaints.map(c => `
+    <tr>
+      <td>${c.tenant}</td>
+      <td>Room ${c.room}</td>
+      <td>${c.issue}</td>
+      <td>${c.date}</td>
+      <td class="status-${c.status}">${c.status === 'resolved' ? '✓ Resolved' : '● Open'}</td>
+      <td>${c.status === 'open' ? `<button class="action-btn resolve" onclick="resolveComplaint(${c.id})">Resolve</button>` : '—'}</td>
+    </tr>
+  `).join('');
+}
+
+function resolveComplaint(id) {
+  complaints = complaints.map(c => c.id === id ? {...c, status:'resolved'} : c);
+  renderComplaints();
+}
+
+function deleteTenant(id) {
+  if (confirm('Remove this tenant?')) {
+    tenants = tenants.filter(t => t.id !== id);
+    renderTenants();
+  }
+}
+
+function editTenant(id) {
+  const t = tenants.find(t => t.id === id);
+  if (!t) return;
+  alert(`Edit tenant: ${t.name}\n\nThis would open an edit modal in production.`);
+}
+
+function showAddTenant() {
+  document.getElementById('addTenantModal').classList.add('open');
+}
+
+function addTenant() {
+  const name = document.getElementById('tName').value;
+  const mobile = document.getElementById('tMobile').value;
+  const room = document.getElementById('tRoom').value;
+  const rent = document.getElementById('tRent').value;
+  
+  if (!name || !room) { alert('Please fill in at least name and room number.'); return; }
+  
+  tenants.push({
+    id: Date.now(), name, mobile, room,
+    rent: parseInt(rent) || 16500,
+    deposit: parseInt(document.getElementById('tDeposit').value) || 6500,
+    joining: document.getElementById('tJoining').value,
+    payment: 'pending', notice: false,
+    address: document.getElementById('tAddress').value
+  });
+  
+  document.getElementById('addTenantModal').classList.remove('open');
+  renderTenants();
+  // clear
+  ['tName','tMobile','tRoom','tRent','tDeposit','tJoining','tAddress'].forEach(id => document.getElementById(id).value = '');
+}
+
+// ─── ENQUIRY FORM ───
+function submitEnquiry() {
+  const name = document.querySelector('#contact .form-input').value || 'Interested Tenant';
+  const room = document.querySelector('#contact .form-select').value || 'a room';
+  const msg = `Hi, I am ${name} and I am interested in ${room} at Swag Colive, Madhapur. Please share availability and further details. Thank you!`;
+  window.open('https://wa.me/918185989721?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ─── VACANCY COUNTER ANIMATION ───
+let vc = 12;
+setInterval(() => {
+  const el = document.getElementById('vacancyCount');
+  if (el) el.textContent = vc;
+}, 3000);
+</script>
+</body>
+</html>
